@@ -11,7 +11,19 @@
         padding-bottom: 10px;
     }
 </style>
-    <h2>Liste des futurs groupe en concert : </h2>
+    <h2>Liste des futurs concerts en concert : </h2>
+
+    {% if isNull %}
+        <h1>Alo?</h1>
+    {% endif %}
+
+    {% if isNull == false %}
+        {% for c in theConcert %}
+            <ul>
+                <a href="display/{{ c.id }}"> {{ c.nameConcert}} </a> <a href="delete/{{ c.id }}"> SUPPRIMER LE CONCERT </a>
+            </ul>
+        {% endfor %}
+    {% endif %}
 
     <div>
         <a href="{{ path('concert_create') }}">

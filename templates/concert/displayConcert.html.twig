@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {% if isNull == true %}
+        <h1>Concert inexistant :/</h1>
+    {% endif %}
+
+    {% if isNull == false %}
+
+    <h1> CA A FONCTIONNE </h1>
+
+    {{ c.nameConcert }}
+
+    {% endif %}
+
+{% endblock %}

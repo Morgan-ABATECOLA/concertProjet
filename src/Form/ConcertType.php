@@ -18,18 +18,20 @@ class ConcertType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('nameConcert', TextType::class, ['label' => 'Nom du concert'])
-            ->add('date', DateType::class, ['widget' => 'choice', 'format' => 'dd / MM / yyyy'])
-            ->add('hourEnd', TimeType::class, ['widget'=>'choice'])
-            ->add('hourBeginning', TimeType::class, ['widget'=>'choice'])
+            ->add('nameConcert', TextType::class, ['label' => 'Nom du concert', 'required' => true])
+            ->add('date', DateType::class, ['widget' => 'choice', 'format' => 'dd / MM / yyyy', 'required' => true])
+            ->add('hourEnd', TimeType::class)
+            ->add('hourBeginning', TimeType::class)
             ->add('bands', EntityType::class, [
                 'class' => Band::class,
                 'multiple' => true,
-                'choice_label' => 'nameBand'
+                'choice_label' => 'nameBand',
+                'required' => true
             ])
             ->add('concertRoom', EntityType::class, [
                 'class' => ConcertRoom::class,
-                'choice_label' => 'nameConcertRoom'
+                'choice_label' => 'nameConcertRoom',
+                'required' => true
             ])
         ;
     }
