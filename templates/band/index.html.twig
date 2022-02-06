@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {% if isNull == false %}
+        <h1> {{ theBand.getNameBand() }} ! </h1>
+        {{ theBand.getNameBand() }}
+    {% endif %}
+
+    {% if isNull == true %}
+        <h1> Groupe inexistant</h1>
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+<style>
+    .main-container {
+        color: crimson;
+        font-size: 2em;
+    }
+</style>
+
+<div class="main-container">
+    <h1> BIENVENUE ! </h1>
+    {% if isNull == false %}
+        <h1> C'est bon ! </h1>
+    {{ theBand.getNameBand() }}
+    {% endif %}
+
+    {% if isNull == true %}
+        <h1> Groupe inexistant :/ </h1>
+    {% endif %}
+
+</div>
+{% endblock %}
