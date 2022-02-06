@@ -4,14 +4,20 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
  */
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
+
+    public const ROLE_USER = 'ROLE_USER';
+    public const ROLE_ADMIN = 'ROLE_ADMIN';
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -25,7 +31,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $email;
 
     /**
-     * @ORM\Column(type="json")
+     * @ORM\Column(type="string", length=180, unique=false, nullable=true)
+     */
+    private $firstName;
+
+    /**
+     * @ORM\Column(type="string", length=180, unique=false, nullable=true)
+     */
+    private $lastName;
+
+    /**
+     * @ORM\Column(type="array")
      */
     private $roles = [];
 
@@ -68,6 +84,30 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function getUsername(): string
     {
         return (string) $this->email;
+    }
+
+    public function getLastName(): string
+    {
+        return (string) $this->lastName;
+    }
+
+    public function setLastName(String $s): self
+    {
+        $this->lastName = $s;
+
+        return $this;
+    }
+
+    public function getFirstName(): string
+    {
+        return (string) $this->firstName;
+    }
+
+    public function setFirstName(String $s): self
+    {
+        $this->firstName = $s;
+
+        return $this;
     }
 
     /**

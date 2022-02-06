@@ -1,6 +1,8 @@
 {% block body %}
     <style>
         .header-container {
+            display: flex;
+            gap: 2em;
             min-height: 50px;
             width: 100%;
             position: fixed;
@@ -10,11 +12,11 @@
         }
     </style>
 
-
-
     <div class="header-container">
         <div class="home"><a href="{{ path("accueil") }}"> Accueil </a> </div>
 
         <div class="groupes"><a href="{{ path("bands") }}"> Groupes </a> </div>
+
+        <div class="login"><a href="{{ path("app_login") }}"> Se connecter </a> </div>
     </div>
 {% endblock %}
