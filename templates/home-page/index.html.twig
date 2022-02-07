@@ -4,12 +4,16 @@
 
 
 {% block body %}
-<h1>Bienvenue sur le site des concerts !</h1>
+<h1>Prochains concerts a venir : </h1>
 
-<h2> Si vous voulez vous baladez dans le site ( c'est temporaire) :  </h2>
+    {% if isNull == false %}
+        {% for c in theConcert %}
+            <ul>c.nameConcert</ul>
+        {% endfor %}
+    {% endif %}
 
+    {% if isNull == true %}
+        <h2 class="texteConcertNull">Aucuns concerts à venir pour le moment...</h2>
+    {% endif %}
 
-    <a href="bands"> --> Liste de tous les groupes </a>
-    <br>
-    <a href="band/create"> --> Créer un groupe de musique </a>
 {% endblock %}

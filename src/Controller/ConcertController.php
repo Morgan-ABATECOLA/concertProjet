@@ -43,7 +43,7 @@ class ConcertController extends AbstractController
     }
 
     /**
-     * @Route("/concert/list", name="concertList")
+     * @Route("/concert/list", name="concert_list")
      */
     public function concertList(ConcertRepository $concertRepo): Response
     {

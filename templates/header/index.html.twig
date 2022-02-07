@@ -2,21 +2,46 @@
     <style>
         .header-container {
             display: flex;
+            align-items: center;
+            justify-content: space-between;
             gap: 2em;
-            min-height: 50px;
+            min-height: 70px;
             width: 100%;
             position: fixed;
             top: 0;
             background-color: #7b7678;
             padding-left: 1%;
         }
+        a {
+            text-decoration: none;
+        }
+
+        .nav {
+            font-size: 2em;
+        }
+
+        .leftContent {
+            display: flex;
+            gap: 1em;
+        }
+
+        .rightContent {
+            padding-right: 2%;
+        }
     </style>
 
     <div class="header-container">
-        <div class="home"><a href="{{ path("accueil") }}"> Accueil </a> </div>
+        <div class="leftContent">
+            <div class="nav"><a href="{{ path("accueil") }}"> Accueil </a> </div>
 
-        <div class="groupes"><a href="{{ path("bands") }}"> Groupes </a> </div>
+            <div class="nav"><a href="{{ path("concert_list") }}">Concerts</a> </div>
 
-        <div class="login"><a href="{{ path("app_login") }}"> Se connecter </a> </div>
+            <div class="nav"><a href="{{ path("bands") }}"> Groupes </a> </div>
+        </div>
+
+        <div class="rightContent">
+            <div class="nav"><a href="{{ path("app_login") }}"> Se connecter </a> </div>
+        </div>
+
     </div>
 {% endblock %}
