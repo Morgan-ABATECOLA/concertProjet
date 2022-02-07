@@ -19,6 +19,9 @@
         .nav {
             font-size: 2em;
         }
+        .hello {
+            font-size: 1.2em;
+        }
 
         .leftContent {
             display: flex;
@@ -26,6 +29,8 @@
         }
 
         .rightContent {
+            display: flex;
+            gap: 0.3em;
             padding-right: 2%;
         }
     </style>
@@ -40,7 +45,12 @@
         </div>
 
         <div class="rightContent">
-            <div class="nav"><a href="{{ path("app_login") }}"> Se connecter </a> </div>
+            {% if app.user %}
+                <div class="hello"> Bonjour {{ app.user.firstName }} | </div>
+                <div class="hello"><a href="{{ path("account", {'id': app.user.id }) }}"> Mon compte </a> </div>
+            {% else %}
+                <div class="nav"><a href="{{ path("app_login") }}"> Se connecter </a> </div>
+            {% endif %}
         </div>
 
     </div>

@@ -14,7 +14,6 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
-
     public const ROLE_USER = 'ROLE_USER';
     public const ROLE_ADMIN = 'ROLE_ADMIN';
 
@@ -68,6 +67,30 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    public function getFirstName(): ?string
+    {
+        return $this->firstName;
+    }
+
+    public function setFirstName(string $firstName): self
+    {
+        $this->firstName = $firstName;
+
+        return $this;
+    }
+
+    public function getLastName(): ?string
+    {
+        return $this->lastName;
+    }
+
+    public function setLastName(string $lastName): self
+    {
+        $this->lastName = $lastName;
+
+        return $this;
+    }
+
     /**
      * A visual identifier that represents this user.
      *
@@ -84,30 +107,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function getUsername(): string
     {
         return (string) $this->email;
-    }
-
-    public function getLastName(): string
-    {
-        return (string) $this->lastName;
-    }
-
-    public function setLastName(String $s): self
-    {
-        $this->lastName = $s;
-
-        return $this;
-    }
-
-    public function getFirstName(): string
-    {
-        return (string) $this->firstName;
-    }
-
-    public function setFirstName(String $s): self
-    {
-        $this->firstName = $s;
-
-        return $this;
     }
 
     /**
