@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Compte de {{ user.firstName }}
+{% endblock %}
+
+{% block body %}
+    <div class="content">
+        <div>
+            <h1>Nom : {{ user.lastName }}</h1>
+            <h1>Prénom : {{ user.firstName }}</h1>
+            <h1>Email : {{ user.email }}</h1>
+            <h1>Mot de passe : ***********</h1>
+        </div>
+
+        <div>
+            <form action="{{ path("account_update", {'id':user.id}) }}">
+                <button type="submit"> Modifier le compte </button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
