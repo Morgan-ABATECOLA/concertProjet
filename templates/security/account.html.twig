@@ -14,8 +14,11 @@
         </div>
 
         <div>
-            <form action="{{ path("account_update", {'id':user.id}) }}">
+            <form action="{{ path("user_edit", {'id':user.id}) }}">
                 <button type="submit"> Modifier le compte </button>
+            </form>
+            <form action="{{ path("app_logout") }}">
+                <button type="submit"> Se déconnecter </button>
             </form>
         </div>
     </div>

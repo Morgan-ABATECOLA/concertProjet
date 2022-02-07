@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Band{% endblock %}
+
+{% block body %}
+    <h1>{{ band.nameBand }}</h1>
+
+    <table class="table">
+        <tbody>
+        <ul>
+            <h2>Artistes : </h2>
+            {% for b in band.members %}
+                <li>{{ b.firstNameArtist }} {{ b.lastNameArtist }} , {{ b.job }} </li>
+            {% endfor %}
+        </ul>
+
+        {% if band.concerts != null %}
+        <ul>
+            <h2>Prochains concerts : </h2>
+            {% for c in band.concerts %}
+                <li> {{ c.nameConcert }} le {{ c.date|date("d/m/Y")}} </li>
+            {% endfor %}
+        </ul>
+            {% else %}
+            <h3>Ce groupe n'a aucun concert à venir...</h3>
+        {% endif %}
+        </tbody>
+    </table>
+
+
+    <a href="{{ path('band_index') }}">Retour à la liste des groupes</a> <br>
+
+    <a href="{{ path('band_edit', {'id': band.id}) }}">Modifier le groupe {{ band.nameBand }}</a>
+
+    {{ include('band/_delete_form.html.twig') }}
+{% endblock %}

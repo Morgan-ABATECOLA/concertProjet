@@ -8,10 +8,41 @@
 
     {% if isNull == false %}
 
-    <h1> CA A FONCTIONNE </h1>
+    <h1>Nom du concert :  {{ c.nameConcert }} </h1>
+        <h2>Date de représentation : {{ c.date|date("d/m/Y") }} </h2>
+        {% if c.hourBeginning != null %}
+            <h2>Heure de début : {{ c.hourBeginning|date("H:i") }}</h2>
+        {% endif %}
+        {% if c.hourEnd != null %}
+            <h2>Heure de fin : {{ c.hourEnd|date("H:i") }}</h2>
+        {% endif %}
 
-    {{ c.nameConcert }}
+        <h2> Groupes en représentation : </h2>
+        {% for c in c.bands %}
+            <li> {{ c.nameBand }} </li>
+        {% endfor %}
+
 
     {% endif %}
 
+
 {% endblock %}
+{% block footer %}
+    <style>
+        .footer-container {
+            min-height: 150px;
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+            background-color: #7b7678;
+            padding-left: 1%;
+        }
+    </style>
+
+
+
+    <div class="footer-container">
+        <h1> {{ c.concertRoom}} </h1>
+    </div>
+{% endblock %}
+
